@@ -11,8 +11,11 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->date('data');
-            $table->time('ora');
+            $table->integer('anno');
+            $table->integer('mese');
+            $table->integer('giorno');
+            $table->integer('ora');
+            $table->integer('minuto');
         });
     }
 

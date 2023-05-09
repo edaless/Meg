@@ -6,11 +6,14 @@
 
     <ul>
         @foreach ($types as $type)
-            <li>{{ $type -> name }}</li>
+            <li>
+                {{ $type -> name }}
+                @foreach ($type->events as $event)
+                <div>{{ $event -> anno }}/{{ $event -> mese }}/{{ $event -> giorno }}   {{ $event -> ora }}:{{ $event -> minuto }}</div>
+            @endforeach
+            </li>
         @endforeach
-        @foreach ($events as $event)
-            <li>{{ $event -> ora }}</li>
-        @endforeach
+       
 
         <a href="{{ route('type.create') }}">CREATE NEW type</a>
         <br>

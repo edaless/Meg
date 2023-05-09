@@ -31,20 +31,23 @@ class MainController extends Controller
     {
 
         $data = $request->validate([
-            'tipo' => 'required',
-            // 'ora' => 'required|time',
-            'data' => 'required|date',
+            'type_id' => 'required|integer',
+            'anno' => 'required|integer',
+            'mese' => 'required|integer',
+            'giorno' => 'required|integer',
+            'ora' => 'required|integer',
+            'minuto' => 'required|integer',
 
         ]);
-        $data = $request['ora'];
 
-        $event = new Event();
+        // creo event                                          
+        $event = event::make($data);
+        // prendo type da db                           
+        $type = type::find($data['type_id']);
 
-        $event->tipo = intval($data['tipo']);
-        $event->ora = $data['ora'];
-        $event->data = $data['data'];
-
-
+        // associo event alla type                               
+        $event->type()->associate($type);
+        // salvo il event                                    
         $event->save();
 
         return redirect()->route('home');

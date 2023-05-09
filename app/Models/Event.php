@@ -10,8 +10,12 @@ class Event extends Model
     use HasFactory;
 
     protected $fillable = [
-        'data',
-        'ora'
+
+        "anno",
+        "mese",
+        "giorno",
+        "ora",
+        "minuto"
     ];
 
 
