@@ -14,21 +14,24 @@ class MainController extends Controller
     {
 
         $events = event::all();
+        $types = type::all();
 
-        return view('pages.home', compact('events'));
+        return view('pages.home', compact('types', 'events'));
     }
 
     public function eventCreate()
     {
 
-        return view('pages.eventCreate');
+        $types = type::all();
+
+        return view('pages.eventCreate', compact('types'));
     }
 
     public function eventStore(Request $request)
     {
 
         $data = $request->validate([
-            'tipo' => 'required|integer',
+            'tipo' => 'required',
             // 'ora' => 'required|time',
             'data' => 'required|date',
 
@@ -37,7 +40,7 @@ class MainController extends Controller
 
         $event = new Event();
 
-        $event->tipo = $data['tipo'];
+        $event->tipo = intval($data['tipo']);
         $event->ora = $data['ora'];
         $event->data = $data['data'];
 
@@ -57,13 +60,13 @@ class MainController extends Controller
     {
 
         $data = $request->validate([
-            'nome' => 'required|string'
+            'name' => 'required|string'
 
         ]);
 
         $type = new Type();
 
-        $type->nome = $data['nome'];
+        $type->name = $data['name'];
 
 
         $type->save();

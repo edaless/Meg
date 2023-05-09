@@ -14,6 +14,9 @@ class Event extends Model
         'ora'
     ];
 
+
+    public $timestamps = false;
+
     public function type()
     {
         return $this->belongsTo(Type::class);

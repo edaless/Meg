@@ -13,6 +13,8 @@ class Type extends Model
         'name'
     ];
 
+    public $timestamps = false;
+
     public function events()
     {
         return $this->hasMany(Event::class);
