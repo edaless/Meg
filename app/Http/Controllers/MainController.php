@@ -76,4 +76,20 @@ class MainController extends Controller
 
         return redirect()->route('home');
     }
+
+    public function typeDelete(Type $type)
+    {
+
+        $type->delete();
+
+        return redirect()->route('home');
+    }
+
+    public function eventDelete(Event $event)
+    {
+
+        $event->delete();
+
+        return redirect()->route('home');
+    }
 }

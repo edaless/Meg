@@ -1,9 +1,20 @@
 @import '~bootstrap/scss/bootstrap';
 
+li {
+    list-style: none;
+}
+
+ul {
+    padding: 0;
+}
 
 input {
 
     .inputnum {
         width: 200px;
     }
+}
+
+.pipi {
+    background-color: yellow;
 }
