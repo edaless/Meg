@@ -5,24 +5,29 @@
     <a href="{{ route('type.create') }}">CREATE NEW type</a>
     <br>
 
-    <ul>
+    <ul class="d-flex">
         @foreach ($types as $type)
-            <li class="pipi">
-                {{ $type -> name }}
-                <a href="{{ route('type.delete', $type) }}">X</a>
+            <li class="{{ $type -> name }} col d-flex flex-column justify-content-between" >
+                <span class="titolo">
+                    {{ $type -> name }}
+                </span>
                 @foreach ($type->events as $event)
-                <div>
-                    {{ $event -> anno }}/{{ $event -> mese }}/{{ $event -> giorno }}   {{ $event -> ora }}:{{ $event -> minuto }}
-                    <a href="{{ route('event.delete', $event) }}">X</a>
-                </div>
-                
-            @endforeach
+                    <div>
+                        {{ $event -> anno }}/{{ $event -> mese }}/{{ $event -> giorno }}   {{ $event -> ora }}:{{ $event -> minuto }}
+                        <a href="{{ route('event.delete', $event) }}">X</a>
+                    </div>
+                    
+                    {{-- elimina tipo --}}
+                    <a href="{{ route('type.delete', $type) }}">X</a>
+                    
+                @endforeach
+                <a href="{{ route('event.create') }}">CREATE NEW event</a>
             </li>
         @endforeach
        
 
-        <a href="{{ route('event.create') }}">CREATE NEW event</a>
     </ul>
+    <a href="{{ route('event.create') }}">CREATE NEW event</a>
 
 
 @endsection
