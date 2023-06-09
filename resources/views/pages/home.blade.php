@@ -2,6 +2,8 @@
 
 @section('content')
 
+    <h1>iducun9aijc0ai</h1>
+
     <a href="{{ route('type.create') }}">CREATE NEW type</a>
     <br>
 
